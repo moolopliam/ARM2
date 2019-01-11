@@ -1,0 +1,27 @@
+﻿@model TheMusic.Models.MusicStyle
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MusicStyle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.mstStyleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mstStyleName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("แก้ไข", "Edit", new { id = Model.mstMusicStyleID }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("ย้อนกลับ", "Index", null, new { @class = "btn btn-info" })
+</p>

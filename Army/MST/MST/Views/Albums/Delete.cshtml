@@ -1,0 +1,60 @@
+﻿@model MST.Models.Albums
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Albums</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alAlbumsID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alAlbumsID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Band.bBandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Band.bBandName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alAlbumsName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alAlbumsName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alPictureAlbums)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alPictureAlbums)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

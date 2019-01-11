@@ -1,0 +1,43 @@
+﻿@model MST.Models.Art
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Art</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.aName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aBirthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aBirthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aArtProfiles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aArtProfiles)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.aArtID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

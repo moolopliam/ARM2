@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MST.Models.Band>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    audio {
+        width: 235px;
+    }
+</style>
+<h2>ศิลปิน</h2>
+
+<div class="row row-sm">
+    @foreach (var item in Model)
+    {
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+            <div class="item">
+                <div class="pos-rlt">
+                    <div class="bottom">
+                        <span class="badge bg-info m-l-sm m-b-sm"></span>
+                    </div>
+                    <div class="item-overlay opacity r r-2x bg-black">
+                        <div class="text-info padder m-t-sm text-sm">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o text-muted"></i>
+                        </div>
+                        <div class="center text-center m-t-n">
+
+                        </div>
+                        <div class="bottom padder m-b-sm">
+                        </div>
+                    </div>
+                    @*<a href="#"><img src="@Url.Content( item.bPicturebands)" alt="" class="r r-2x img-full"></a>*@
+                </div>
+                <div class="padder-v">
+                    <a href="@Url.Action("Detailsl", "Bands",new { id = item.bBandID })" class="text-ellipsis">@Html.DisplayFor(modelItem => item.bBandName)</a>
+                    @*<a href="#" class="text-ellipsis text-xs text-muted"> @Html.DisplayNameFor(model => model.Albums.alAlbumsName): @Html.DisplayFor(modelItem => item.Albums.alAlbumsName)</a>
+                    <a href="#" class="text-ellipsis text-xs text-muted">@Html.DisplayNameFor(model => model.Band.bBandName):  @Html.DisplayFor(modelItem => item.Band.bBandName)</a>
+                    @if (item.msMusicUpload != null)
+                    {
+                        <audio controls class="add-on">
+                            <source src="@Url.Content( item.msMusicUpload)" type="audio/mp4" width="50%" />
+                        </audio>
+
+                    }*@
+                </div>
+
+            </div>
+        </div>
+    }
+</div>

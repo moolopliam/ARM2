@@ -1,0 +1,41 @@
+﻿@model TheMusic.Models.UserAccount
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ลบข้อมูล</h2>
+
+<h3>คุณต้องการลบข้อมูลใช่ไหม?</h3>
+<div>
+    <h4>UserAccount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserType.TypeUserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserType.TypeUserName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="ลบข้อมูล" class="btn btn-danger" /> |
+            @Html.ActionLink("ย้อนกลับ", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    }
+</div>

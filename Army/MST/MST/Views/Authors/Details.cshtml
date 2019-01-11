@@ -1,0 +1,35 @@
+﻿@model MST.Models.Author
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Author</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.atAuthorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.atAuthorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.atProfile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.atProfile)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.atAuthorID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

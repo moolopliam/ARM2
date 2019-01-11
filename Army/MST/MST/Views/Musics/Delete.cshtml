@@ -1,0 +1,97 @@
+﻿@model MST.Models.Music
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Music</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.msMusicName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.msMusicName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.msLyrics)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.msLyrics)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.msAlbumsID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.msAlbumsID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.msMusicUpload)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.msMusicUpload)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Albums.alAlbumsName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Albums.alAlbumsName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Author.atAuthorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author.atAuthorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Band.bBandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Band.bBandName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Melody.mlMelodyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Melody.mlMelodyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MusicStyle.mstStyleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MusicStyle.mstStyleName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Indexl")
+        </div>
+    }
+</div>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TheMusic.Models.Music>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">รายฃะเอียดเพลงของอัลบั้ม</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table" id="example">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.msMusicName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Albums.Band.bBandName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Albums.alAlbumsName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Author.atAuthorName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Melody.mlMelodyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MusicStyle.mstStyleName)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.msMusicName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Albums.Band.bBandName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Albums.alAlbumsName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Author.atAuthorName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Melody.mlMelodyName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MusicStyle.mstStyleName)
+                        </td>
+                        <td class="pull-right">
+                            @Html.ActionLink("แก้ไข", "Edit","Musics",new { id=item.msMusicID },new { @class = "btn btn-warning"})
+                            @Html.ActionLink("รายละเอียด", "Details","Musics", new { id=item.msMusicID },new { @class = "btn btn-info" })
+                            @Html.ActionLink("ลบข้อมูล", "Delete","Musics", new { id=item.msMusicID },new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

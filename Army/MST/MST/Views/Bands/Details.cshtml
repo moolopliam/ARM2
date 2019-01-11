@@ -1,0 +1,78 @@
+﻿@model MST.Models.Band
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Band</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bBandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bBandName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bBandProfile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bBandProfile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bPicturebands)
+        </dt>
+
+        <dd>
+            @if (Model.bPicturebands != null)
+            {
+                <img src="@Url.Content(Model.bPicturebands)" style="height:25px;width:50px" />
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Art.aName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Art.aName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BandType.btNameType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BandType.btNameType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Record.rRecordName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Record.rRecordName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.bBandID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,27 @@
+﻿@model TheMusic.Models.Record
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Record</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.rRecordName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rRecordName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("แก้ไข", "Edit", new { id = Model.rRecordID }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("ย้อนกลับ", "Index", null, new { @class = "btn btn-info" })
+</p>

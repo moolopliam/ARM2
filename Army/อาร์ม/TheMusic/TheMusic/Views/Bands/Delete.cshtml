@@ -1,0 +1,73 @@
+﻿@model TheMusic.Models.Band
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ลบข้อมูล</h2>
+
+<h3>คุณต้องการลบข้อมูลใช่ไหม?</h3>
+<div>
+    <h4>Band</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bBandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bBandName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bBandProfile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bBandProfile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bPicturebands)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bPicturebands)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BandType.btNameType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BandType.btNameType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Record.rRecordName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Record.rRecordName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="ลบข้อมูล" class="btn btn-danger" /> |
+            @Html.ActionLink("ย้อนกลับ", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    }
+</div>

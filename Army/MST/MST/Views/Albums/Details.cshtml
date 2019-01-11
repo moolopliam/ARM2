@@ -1,0 +1,50 @@
+﻿@model MST.Models.Albums
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Albums</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alAlbumsName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alAlbumsName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Band.bBandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Band.bBandName)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alPictureAlbums)
+        </dt>
+
+        <dd>
+            @if (Model.alPictureAlbums != null)
+            {
+                <img src="@Url.Content(Model.alPictureAlbums)" style="height:25px;width:50px" />
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.alAlbumsID  }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

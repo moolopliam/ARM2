@@ -1,0 +1,614 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MusicStory5903Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Albums">
+          <Key>
+            <PropertyRef Name="alABID" />
+          </Key>
+          <Property Name="alABID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="alBandID" Type="int" />
+          <Property Name="alAlbumsName" Type="varchar" MaxLength="50" />
+          <Property Name="alPictureAlbums" Type="image" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="atAuthorID" />
+          </Key>
+          <Property Name="atAuthorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="atAuthorName" Type="varchar" MaxLength="50" />
+          <Property Name="atProfile" Type="varchar(max)" />
+          <Property Name="atPicture" Type="image" />
+        </EntityType>
+        <EntityType Name="Band">
+          <Key>
+            <PropertyRef Name="bBandID" />
+          </Key>
+          <Property Name="bBandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bBandName" Type="varchar" MaxLength="50" />
+          <Property Name="bRecordID" Type="int" />
+          <Property Name="bBTypeID" Type="int" />
+          <Property Name="bStatus" Type="varchar" MaxLength="10" />
+          <Property Name="bBandProfile" Type="varchar(max)" />
+          <Property Name="bPicturebands" Type="image" />
+        </EntityType>
+        <EntityType Name="BandType">
+          <Key>
+            <PropertyRef Name="btBandTypeID" />
+          </Key>
+          <Property Name="btBandTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="btNameType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Melody">
+          <Key>
+            <PropertyRef Name="mlMelodyID" />
+          </Key>
+          <Property Name="mlMelodyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mlMelodyName" Type="varchar" MaxLength="50" />
+          <Property Name="mlDetail" Type="varchar" MaxLength="300" />
+          <Property Name="mlLPic" Type="image" />
+        </EntityType>
+        <EntityType Name="Music">
+          <Key>
+            <PropertyRef Name="msMusicID" />
+          </Key>
+          <Property Name="msMusicID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="msABID" Type="int" Nullable="false" />
+          <Property Name="msMusicName" Type="varchar" MaxLength="50" />
+          <Property Name="msLyrics" Type="varchar(max)" />
+          <Property Name="msAuthorID" Type="int" />
+          <Property Name="msMelodyID" Type="int" />
+          <Property Name="msBandID" Type="int" />
+          <Property Name="msMStyleID" Type="int" />
+          <Property Name="msMusicUpload" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="MusicStyle">
+          <Key>
+            <PropertyRef Name="mstMusicStyleID" />
+          </Key>
+          <Property Name="mstMusicStyleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mstStyleName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Record">
+          <Key>
+            <PropertyRef Name="rRecordID" />
+          </Key>
+          <Property Name="rRecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rRecordName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="20" />
+          <Property Name="UserTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="TypeUserID" />
+          </Key>
+          <Property Name="TypeUserID" Type="int" Nullable="false" />
+          <Property Name="TypeUserName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Albums_Band1">
+          <End Role="Band" Type="Self.Band" Multiplicity="0..1" />
+          <End Role="Albums" Type="Self.Albums" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Band">
+              <PropertyRef Name="bBandID" />
+            </Principal>
+            <Dependent Role="Albums">
+              <PropertyRef Name="alBandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Band_BandType1">
+          <End Role="BandType" Type="Self.BandType" Multiplicity="0..1" />
+          <End Role="Band" Type="Self.Band" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BandType">
+              <PropertyRef Name="btBandTypeID" />
+            </Principal>
+            <Dependent Role="Band">
+              <PropertyRef Name="bBTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Band_Record1">
+          <End Role="Record" Type="Self.Record" Multiplicity="0..1" />
+          <End Role="Band" Type="Self.Band" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Record">
+              <PropertyRef Name="rRecordID" />
+            </Principal>
+            <Dependent Role="Band">
+              <PropertyRef Name="bRecordID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Music_Albums1">
+          <End Role="Albums" Type="Self.Albums" Multiplicity="1" />
+          <End Role="Music" Type="Self.Music" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Albums">
+              <PropertyRef Name="alABID" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="msABID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Music_Author1">
+          <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+          <End Role="Music" Type="Self.Music" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="atAuthorID" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="msAuthorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Music_Melody1">
+          <End Role="Melody" Type="Self.Melody" Multiplicity="0..1" />
+          <End Role="Music" Type="Self.Music" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Melody">
+              <PropertyRef Name="mlMelodyID" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="msMelodyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Music_MusicStyle1">
+          <End Role="MusicStyle" Type="Self.MusicStyle" Multiplicity="0..1" />
+          <End Role="Music" Type="Self.Music" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MusicStyle">
+              <PropertyRef Name="mstMusicStyleID" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="msMStyleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccount_UserType1">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="TypeUserID" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MusicStory5903ModelStoreContainer">
+          <EntitySet Name="Albums" EntityType="Self.Albums" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Band" EntityType="Self.Band" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BandType" EntityType="Self.BandType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Melody" EntityType="Self.Melody" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Music" EntityType="Self.Music" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MusicStyle" EntityType="Self.MusicStyle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Record" EntityType="Self.Record" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Albums_Band1" Association="Self.FK_Albums_Band1">
+            <End Role="Band" EntitySet="Band" />
+            <End Role="Albums" EntitySet="Albums" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Band_BandType1" Association="Self.FK_Band_BandType1">
+            <End Role="BandType" EntitySet="BandType" />
+            <End Role="Band" EntitySet="Band" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Band_Record1" Association="Self.FK_Band_Record1">
+            <End Role="Record" EntitySet="Record" />
+            <End Role="Band" EntitySet="Band" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Music_Albums1" Association="Self.FK_Music_Albums1">
+            <End Role="Albums" EntitySet="Albums" />
+            <End Role="Music" EntitySet="Music" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Music_Author1" Association="Self.FK_Music_Author1">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Music" EntitySet="Music" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Music_Melody1" Association="Self.FK_Music_Melody1">
+            <End Role="Melody" EntitySet="Melody" />
+            <End Role="Music" EntitySet="Music" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Music_MusicStyle1" Association="Self.FK_Music_MusicStyle1">
+            <End Role="MusicStyle" EntitySet="MusicStyle" />
+            <End Role="Music" EntitySet="Music" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccount_UserType1" Association="Self.FK_UserAccount_UserType1">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="UserAccount" EntitySet="UserAccount" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MusicStory5903Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MusicStory5903Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Albums" EntityType="MusicStory5903Model.Albums" />
+          <EntitySet Name="Author" EntityType="MusicStory5903Model.Author" />
+          <EntitySet Name="Band" EntityType="MusicStory5903Model.Band" />
+          <EntitySet Name="BandType" EntityType="MusicStory5903Model.BandType" />
+          <EntitySet Name="Melody" EntityType="MusicStory5903Model.Melody" />
+          <EntitySet Name="Music" EntityType="MusicStory5903Model.Music" />
+          <EntitySet Name="MusicStyle" EntityType="MusicStory5903Model.MusicStyle" />
+          <EntitySet Name="Record" EntityType="MusicStory5903Model.Record" />
+          <EntitySet Name="UserAccount" EntityType="MusicStory5903Model.UserAccount" />
+          <EntitySet Name="UserType" EntityType="MusicStory5903Model.UserType" />
+          <AssociationSet Name="FK_Albums_Band1" Association="MusicStory5903Model.FK_Albums_Band1">
+            <End Role="Band" EntitySet="Band" />
+            <End Role="Albums" EntitySet="Albums" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Music_Albums1" Association="MusicStory5903Model.FK_Music_Albums1">
+            <End Role="Albums" EntitySet="Albums" />
+            <End Role="Music" EntitySet="Music" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Music_Author1" Association="MusicStory5903Model.FK_Music_Author1">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Music" EntitySet="Music" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Band_BandType1" Association="MusicStory5903Model.FK_Band_BandType1">
+            <End Role="BandType" EntitySet="BandType" />
+            <End Role="Band" EntitySet="Band" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Band_Record1" Association="MusicStory5903Model.FK_Band_Record1">
+            <End Role="Record" EntitySet="Record" />
+            <End Role="Band" EntitySet="Band" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Music_Melody1" Association="MusicStory5903Model.FK_Music_Melody1">
+            <End Role="Melody" EntitySet="Melody" />
+            <End Role="Music" EntitySet="Music" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Music_MusicStyle1" Association="MusicStory5903Model.FK_Music_MusicStyle1">
+            <End Role="MusicStyle" EntitySet="MusicStyle" />
+            <End Role="Music" EntitySet="Music" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccount_UserType1" Association="MusicStory5903Model.FK_UserAccount_UserType1">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="UserAccount" EntitySet="UserAccount" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Albums">
+          <Key>
+            <PropertyRef Name="alABID" />
+          </Key>
+          <Property Name="alABID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="alBandID" Type="Int32" />
+          <Property Name="alAlbumsName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="alPictureAlbums" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Band" Relationship="MusicStory5903Model.FK_Albums_Band1" FromRole="Albums" ToRole="Band" />
+          <NavigationProperty Name="Music" Relationship="MusicStory5903Model.FK_Music_Albums1" FromRole="Albums" ToRole="Music" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="atAuthorID" />
+          </Key>
+          <Property Name="atAuthorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="atAuthorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="atProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="atPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Music" Relationship="MusicStory5903Model.FK_Music_Author1" FromRole="Author" ToRole="Music" />
+        </EntityType>
+        <EntityType Name="Band">
+          <Key>
+            <PropertyRef Name="bBandID" />
+          </Key>
+          <Property Name="bBandID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bBandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bRecordID" Type="Int32" />
+          <Property Name="bBTypeID" Type="Int32" />
+          <Property Name="bStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="bBandProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bPicturebands" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Albums" Relationship="MusicStory5903Model.FK_Albums_Band1" FromRole="Band" ToRole="Albums" />
+          <NavigationProperty Name="BandType" Relationship="MusicStory5903Model.FK_Band_BandType1" FromRole="Band" ToRole="BandType" />
+          <NavigationProperty Name="Record" Relationship="MusicStory5903Model.FK_Band_Record1" FromRole="Band" ToRole="Record" />
+        </EntityType>
+        <EntityType Name="BandType">
+          <Key>
+            <PropertyRef Name="btBandTypeID" />
+          </Key>
+          <Property Name="btBandTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="btNameType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Band" Relationship="MusicStory5903Model.FK_Band_BandType1" FromRole="BandType" ToRole="Band" />
+        </EntityType>
+        <EntityType Name="Melody">
+          <Key>
+            <PropertyRef Name="mlMelodyID" />
+          </Key>
+          <Property Name="mlMelodyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mlMelodyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mlDetail" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="mlLPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Music" Relationship="MusicStory5903Model.FK_Music_Melody1" FromRole="Melody" ToRole="Music" />
+        </EntityType>
+        <EntityType Name="Music">
+          <Key>
+            <PropertyRef Name="msMusicID" />
+          </Key>
+          <Property Name="msMusicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="msABID" Type="Int32" Nullable="false" />
+          <Property Name="msMusicName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="msLyrics" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="msAuthorID" Type="Int32" />
+          <Property Name="msMelodyID" Type="Int32" />
+          <Property Name="msBandID" Type="Int32" />
+          <Property Name="msMStyleID" Type="Int32" />
+          <Property Name="msMusicUpload" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Albums" Relationship="MusicStory5903Model.FK_Music_Albums1" FromRole="Music" ToRole="Albums" />
+          <NavigationProperty Name="Author" Relationship="MusicStory5903Model.FK_Music_Author1" FromRole="Music" ToRole="Author" />
+          <NavigationProperty Name="Melody" Relationship="MusicStory5903Model.FK_Music_Melody1" FromRole="Music" ToRole="Melody" />
+          <NavigationProperty Name="MusicStyle" Relationship="MusicStory5903Model.FK_Music_MusicStyle1" FromRole="Music" ToRole="MusicStyle" />
+        </EntityType>
+        <EntityType Name="MusicStyle">
+          <Key>
+            <PropertyRef Name="mstMusicStyleID" />
+          </Key>
+          <Property Name="mstMusicStyleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mstStyleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Music" Relationship="MusicStory5903Model.FK_Music_MusicStyle1" FromRole="MusicStyle" ToRole="Music" />
+        </EntityType>
+        <EntityType Name="Record">
+          <Key>
+            <PropertyRef Name="rRecordID" />
+          </Key>
+          <Property Name="rRecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rRecordName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Band" Relationship="MusicStory5903Model.FK_Band_Record1" FromRole="Record" ToRole="Band" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserTypeID" Type="Int32" />
+          <NavigationProperty Name="UserType" Relationship="MusicStory5903Model.FK_UserAccount_UserType1" FromRole="UserAccount" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="TypeUserID" />
+          </Key>
+          <Property Name="TypeUserID" Type="Int32" Nullable="false" />
+          <Property Name="TypeUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserAccount" Relationship="MusicStory5903Model.FK_UserAccount_UserType1" FromRole="UserType" ToRole="UserAccount" />
+        </EntityType>
+        <Association Name="FK_Albums_Band1">
+          <End Type="MusicStory5903Model.Band" Role="Band" Multiplicity="0..1" />
+          <End Type="MusicStory5903Model.Albums" Role="Albums" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Band">
+              <PropertyRef Name="bBandID" />
+            </Principal>
+            <Dependent Role="Albums">
+              <PropertyRef Name="alBandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Music_Albums1">
+          <End Type="MusicStory5903Model.Albums" Role="Albums" Multiplicity="1" />
+          <End Type="MusicStory5903Model.Music" Role="Music" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Albums">
+              <PropertyRef Name="alABID" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="msABID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Music_Author1">
+          <End Type="MusicStory5903Model.Author" Role="Author" Multiplicity="0..1" />
+          <End Type="MusicStory5903Model.Music" Role="Music" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="atAuthorID" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="msAuthorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Band_BandType1">
+          <End Type="MusicStory5903Model.BandType" Role="BandType" Multiplicity="0..1" />
+          <End Type="MusicStory5903Model.Band" Role="Band" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BandType">
+              <PropertyRef Name="btBandTypeID" />
+            </Principal>
+            <Dependent Role="Band">
+              <PropertyRef Name="bBTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Band_Record1">
+          <End Type="MusicStory5903Model.Record" Role="Record" Multiplicity="0..1" />
+          <End Type="MusicStory5903Model.Band" Role="Band" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Record">
+              <PropertyRef Name="rRecordID" />
+            </Principal>
+            <Dependent Role="Band">
+              <PropertyRef Name="bRecordID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Music_Melody1">
+          <End Type="MusicStory5903Model.Melody" Role="Melody" Multiplicity="0..1" />
+          <End Type="MusicStory5903Model.Music" Role="Music" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Melody">
+              <PropertyRef Name="mlMelodyID" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="msMelodyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Music_MusicStyle1">
+          <End Type="MusicStory5903Model.MusicStyle" Role="MusicStyle" Multiplicity="0..1" />
+          <End Type="MusicStory5903Model.Music" Role="Music" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MusicStyle">
+              <PropertyRef Name="mstMusicStyleID" />
+            </Principal>
+            <Dependent Role="Music">
+              <PropertyRef Name="msMStyleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccount_UserType1">
+          <End Type="MusicStory5903Model.UserType" Role="UserType" Multiplicity="0..1" />
+          <End Type="MusicStory5903Model.UserAccount" Role="UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="TypeUserID" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MusicStory5903ModelStoreContainer" CdmEntityContainer="MusicStory5903Entities">
+          <EntitySetMapping Name="Albums">
+            <EntityTypeMapping TypeName="MusicStory5903Model.Albums">
+              <MappingFragment StoreEntitySet="Albums">
+                <ScalarProperty Name="alPictureAlbums" ColumnName="alPictureAlbums" />
+                <ScalarProperty Name="alAlbumsName" ColumnName="alAlbumsName" />
+                <ScalarProperty Name="alBandID" ColumnName="alBandID" />
+                <ScalarProperty Name="alABID" ColumnName="alABID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Author">
+            <EntityTypeMapping TypeName="MusicStory5903Model.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="atPicture" ColumnName="atPicture" />
+                <ScalarProperty Name="atProfile" ColumnName="atProfile" />
+                <ScalarProperty Name="atAuthorName" ColumnName="atAuthorName" />
+                <ScalarProperty Name="atAuthorID" ColumnName="atAuthorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Band">
+            <EntityTypeMapping TypeName="MusicStory5903Model.Band">
+              <MappingFragment StoreEntitySet="Band">
+                <ScalarProperty Name="bPicturebands" ColumnName="bPicturebands" />
+                <ScalarProperty Name="bBandProfile" ColumnName="bBandProfile" />
+                <ScalarProperty Name="bStatus" ColumnName="bStatus" />
+                <ScalarProperty Name="bBTypeID" ColumnName="bBTypeID" />
+                <ScalarProperty Name="bRecordID" ColumnName="bRecordID" />
+                <ScalarProperty Name="bBandName" ColumnName="bBandName" />
+                <ScalarProperty Name="bBandID" ColumnName="bBandID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BandType">
+            <EntityTypeMapping TypeName="MusicStory5903Model.BandType">
+              <MappingFragment StoreEntitySet="BandType">
+                <ScalarProperty Name="btNameType" ColumnName="btNameType" />
+                <ScalarProperty Name="btBandTypeID" ColumnName="btBandTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Melody">
+            <EntityTypeMapping TypeName="MusicStory5903Model.Melody">
+              <MappingFragment StoreEntitySet="Melody">
+                <ScalarProperty Name="mlLPic" ColumnName="mlLPic" />
+                <ScalarProperty Name="mlDetail" ColumnName="mlDetail" />
+                <ScalarProperty Name="mlMelodyName" ColumnName="mlMelodyName" />
+                <ScalarProperty Name="mlMelodyID" ColumnName="mlMelodyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Music">
+            <EntityTypeMapping TypeName="MusicStory5903Model.Music">
+              <MappingFragment StoreEntitySet="Music">
+                <ScalarProperty Name="msMusicUpload" ColumnName="msMusicUpload" />
+                <ScalarProperty Name="msMStyleID" ColumnName="msMStyleID" />
+                <ScalarProperty Name="msBandID" ColumnName="msBandID" />
+                <ScalarProperty Name="msMelodyID" ColumnName="msMelodyID" />
+                <ScalarProperty Name="msAuthorID" ColumnName="msAuthorID" />
+                <ScalarProperty Name="msLyrics" ColumnName="msLyrics" />
+                <ScalarProperty Name="msMusicName" ColumnName="msMusicName" />
+                <ScalarProperty Name="msABID" ColumnName="msABID" />
+                <ScalarProperty Name="msMusicID" ColumnName="msMusicID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MusicStyle">
+            <EntityTypeMapping TypeName="MusicStory5903Model.MusicStyle">
+              <MappingFragment StoreEntitySet="MusicStyle">
+                <ScalarProperty Name="mstStyleName" ColumnName="mstStyleName" />
+                <ScalarProperty Name="mstMusicStyleID" ColumnName="mstMusicStyleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Record">
+            <EntityTypeMapping TypeName="MusicStory5903Model.Record">
+              <MappingFragment StoreEntitySet="Record">
+                <ScalarProperty Name="rRecordName" ColumnName="rRecordName" />
+                <ScalarProperty Name="rRecordID" ColumnName="rRecordID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccount">
+            <EntityTypeMapping TypeName="MusicStory5903Model.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserType">
+            <EntityTypeMapping TypeName="MusicStory5903Model.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="TypeUserName" ColumnName="TypeUserName" />
+                <ScalarProperty Name="TypeUserID" ColumnName="TypeUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="19bd549af05a45ec894b37ac10fcc77a" Name="Diagram1">
+        <EntityTypeShape EntityType="MusicStory5903Model.Albums" Width="1.5" PointX="5.25" PointY="1.625" />
+        <EntityTypeShape EntityType="MusicStory5903Model.Author" Width="1.5" PointX="5.25" PointY="7.5" />
+        <EntityTypeShape EntityType="MusicStory5903Model.Band" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="MusicStory5903Model.BandType" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="MusicStory5903Model.Melody" Width="1.5" PointX="5.25" PointY="10.125" />
+        <EntityTypeShape EntityType="MusicStory5903Model.Music" Width="1.5" PointX="7.5" PointY="1" />
+        <EntityTypeShape EntityType="MusicStory5903Model.MusicStyle" Width="1.5" PointX="5.25" PointY="5.125" />
+        <EntityTypeShape EntityType="MusicStory5903Model.Record" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="MusicStory5903Model.UserAccount" Width="1.5" PointX="10" PointY="5.875" />
+        <EntityTypeShape EntityType="MusicStory5903Model.UserType" Width="1.5" PointX="7.75" PointY="6" />
+        <AssociationConnector Association="MusicStory5903Model.FK_Albums_Band1" />
+        <AssociationConnector Association="MusicStory5903Model.FK_Music_Albums1" />
+        <AssociationConnector Association="MusicStory5903Model.FK_Music_Author1" />
+        <AssociationConnector Association="MusicStory5903Model.FK_Band_BandType1" />
+        <AssociationConnector Association="MusicStory5903Model.FK_Band_Record1" />
+        <AssociationConnector Association="MusicStory5903Model.FK_Music_Melody1" />
+        <AssociationConnector Association="MusicStory5903Model.FK_Music_MusicStyle1" />
+        <AssociationConnector Association="MusicStory5903Model.FK_UserAccount_UserType1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

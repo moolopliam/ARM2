@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MusicStory5903ModelStoreContainer" CdmEntityContainer="MusicStory5903Entities">
+    <EntitySetMapping Name="Albums">
+      <EntityTypeMapping TypeName="MusicStory5903Model.Albums">
+        <MappingFragment StoreEntitySet="Albums">
+          <ScalarProperty Name="alPictureAlbums" ColumnName="alPictureAlbums" />
+          <ScalarProperty Name="alAlbumsName" ColumnName="alAlbumsName" />
+          <ScalarProperty Name="alBandID" ColumnName="alBandID" />
+          <ScalarProperty Name="alABID" ColumnName="alABID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Author">
+      <EntityTypeMapping TypeName="MusicStory5903Model.Author">
+        <MappingFragment StoreEntitySet="Author">
+          <ScalarProperty Name="atPicture" ColumnName="atPicture" />
+          <ScalarProperty Name="atProfile" ColumnName="atProfile" />
+          <ScalarProperty Name="atAuthorName" ColumnName="atAuthorName" />
+          <ScalarProperty Name="atAuthorID" ColumnName="atAuthorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Band">
+      <EntityTypeMapping TypeName="MusicStory5903Model.Band">
+        <MappingFragment StoreEntitySet="Band">
+          <ScalarProperty Name="bPicturebands" ColumnName="bPicturebands" />
+          <ScalarProperty Name="bBandProfile" ColumnName="bBandProfile" />
+          <ScalarProperty Name="bStatus" ColumnName="bStatus" />
+          <ScalarProperty Name="bBTypeID" ColumnName="bBTypeID" />
+          <ScalarProperty Name="bRecordID" ColumnName="bRecordID" />
+          <ScalarProperty Name="bBandName" ColumnName="bBandName" />
+          <ScalarProperty Name="bBandID" ColumnName="bBandID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BandType">
+      <EntityTypeMapping TypeName="MusicStory5903Model.BandType">
+        <MappingFragment StoreEntitySet="BandType">
+          <ScalarProperty Name="btNameType" ColumnName="btNameType" />
+          <ScalarProperty Name="btBandTypeID" ColumnName="btBandTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Melody">
+      <EntityTypeMapping TypeName="MusicStory5903Model.Melody">
+        <MappingFragment StoreEntitySet="Melody">
+          <ScalarProperty Name="mlLPic" ColumnName="mlLPic" />
+          <ScalarProperty Name="mlDetail" ColumnName="mlDetail" />
+          <ScalarProperty Name="mlMelodyName" ColumnName="mlMelodyName" />
+          <ScalarProperty Name="mlMelodyID" ColumnName="mlMelodyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Music">
+      <EntityTypeMapping TypeName="MusicStory5903Model.Music">
+        <MappingFragment StoreEntitySet="Music">
+          <ScalarProperty Name="msMusicUpload" ColumnName="msMusicUpload" />
+          <ScalarProperty Name="msMStyleID" ColumnName="msMStyleID" />
+          <ScalarProperty Name="msBandID" ColumnName="msBandID" />
+          <ScalarProperty Name="msMelodyID" ColumnName="msMelodyID" />
+          <ScalarProperty Name="msAuthorID" ColumnName="msAuthorID" />
+          <ScalarProperty Name="msLyrics" ColumnName="msLyrics" />
+          <ScalarProperty Name="msMusicName" ColumnName="msMusicName" />
+          <ScalarProperty Name="msABID" ColumnName="msABID" />
+          <ScalarProperty Name="msMusicID" ColumnName="msMusicID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MusicStyle">
+      <EntityTypeMapping TypeName="MusicStory5903Model.MusicStyle">
+        <MappingFragment StoreEntitySet="MusicStyle">
+          <ScalarProperty Name="mstStyleName" ColumnName="mstStyleName" />
+          <ScalarProperty Name="mstMusicStyleID" ColumnName="mstMusicStyleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Record">
+      <EntityTypeMapping TypeName="MusicStory5903Model.Record">
+        <MappingFragment StoreEntitySet="Record">
+          <ScalarProperty Name="rRecordName" ColumnName="rRecordName" />
+          <ScalarProperty Name="rRecordID" ColumnName="rRecordID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAccount">
+      <EntityTypeMapping TypeName="MusicStory5903Model.UserAccount">
+        <MappingFragment StoreEntitySet="UserAccount">
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserType">
+      <EntityTypeMapping TypeName="MusicStory5903Model.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="TypeUserName" ColumnName="TypeUserName" />
+          <ScalarProperty Name="TypeUserID" ColumnName="TypeUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

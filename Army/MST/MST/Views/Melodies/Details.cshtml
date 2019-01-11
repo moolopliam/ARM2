@@ -1,0 +1,27 @@
+﻿@model MST.Models.Melody
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Melody</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.mlMelodyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mlMelodyName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.mlMelodyID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

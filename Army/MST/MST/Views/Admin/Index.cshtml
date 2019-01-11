@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+@*<h2>Index</h2>*@
+
+<div class="jumbotron">
+    <h1>Musicstory</h1>
+    <p class="lead">"ฟังเพลงได้ทุกที่ทุกเวลา" </p>
+
+
+    <a type="button" href="@Url.Action("Indexl","Musics")" class="btn btn-warning">เพลง</a>
+    <a type="button" href="@Url.Action("Indexl","Albums")" class="btn btn-warning">อัลบัม</a>
+    <a type="button" href="@Url.Action("Indexl", "Bands")" class="btn btn-warning">ศิลปิน</a>
+    
+    <a type="button" href="@Url.Action("Index","Authors")" class="btn btn-warning">ผู้เเต่ง</a>
+    <a type="button" href="@Url.Action("Index", "MusicStyles")" class="btn btn-warning">ประเภทดนตรี</a>
+    <a type="button" href="@Url.Action("Index", "BandTypes")" class="btn btn-warning">ประเภทวงดนตรี</a>
+    <a type="button" href="@Url.Action("Index", "Melodies")" class="btn btn-warning">ผู้เเต่งทำนอง</a>
+    <a type="button" href="@Url.Action("Index", "Records")" class="btn btn-warning">บริษัท</a>
+    
+
+
+</div>
+

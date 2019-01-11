@@ -1,0 +1,43 @@
+﻿@model MST.Models.Member
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Member</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.mbMemberName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mbMemberName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mbBandID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mbBandID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Art.aTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Art.aTitle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.mbMemberID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MST.Models.Author>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.atAuthorID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.atAuthorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.atProfile)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.atAuthorID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.atAuthorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.atProfile)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {id=item.atAuthorID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.atAuthorID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.atAuthorID })
+        </td>
+    </tr>
+}
+
+</table>

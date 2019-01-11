@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MST.Models.MusicStyle>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.mstStyleName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.mstStyleName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.mstMusicStyleID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.mstMusicStyleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.mstMusicStyleID })
+        </td>
+    </tr>
+}
+
+</table>

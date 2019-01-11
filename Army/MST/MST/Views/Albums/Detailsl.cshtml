@@ -1,0 +1,51 @@
+﻿@model MST.Models.Albums
+
+@{
+    ViewBag.Title = "Detailsl";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Detailsl</h2>
+
+<div>
+    <h4>Albums</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.alABID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alABID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alAlbumsID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alAlbumsID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alBandID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alBandID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alAlbumsName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alAlbumsName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.alABID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

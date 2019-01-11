@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MST.Models.Band>
+
+
+@{
+    ViewBag.Title = "Indexl";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.bBandName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bStatus)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.bBandProfile)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.bPicturebands)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.BandType.btNameType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Record.rRecordName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.bBandName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bStatus)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.bBandProfile)
+                </td>*@
+            <td>
+                @if (item.bPicturebands != null)
+                {
+                    <img src="@Url.Content(item.bPicturebands)" style="height:25px;width:50px" />
+                }
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.BandType.btNameType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Record.rRecordName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", null, new { id = item.bBandID }, new { @class = "btn btn-s-md btn-warning btn-rounded" })
+                @Html.ActionLink("Details", "Details", new { id = item.bBandID }, new { @class = "btn btn-s-md btn-warning btn-rounded" })
+                @Html.ActionLink("Delete", "Delete", new { bBandID = item.bBandID }, new { @class = "btn btn-s-md btn-warning btn-rounded" })
+            </td>
+        </tr>
+    }
+
+</table>

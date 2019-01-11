@@ -1,0 +1,88 @@
+﻿@model IEnumerable<MST.Models.Music>
+
+@{
+    ViewBag.Title = "Index1";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Index1</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.msMusicID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.msABID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.msMusicName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.msLyrics)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.msAuthorID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.msMelodyID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.msAlbumsID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.msBandID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.msMStyleID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.msMusicUpload)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.msMusicID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.msABID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.msMusicName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.msLyrics)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.msAuthorID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.msMelodyID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.msAlbumsID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.msBandID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.msMStyleID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.msMusicUpload)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.msMusicID  }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.msMusicID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.msMusicID  })
+        </td>
+    </tr>
+}
+
+</table>

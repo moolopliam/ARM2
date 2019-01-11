@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MST.Models.Record>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.rRecordName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.rRecordName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.rRecordID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.rRecordID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.rRecordID })
+        </td>
+    </tr>
+}
+
+</table>

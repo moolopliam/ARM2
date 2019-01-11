@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TheMusic.Models.UserAccount>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">ข้อมูลบัญชี</h3>
+    </div>
+    <div class="panel-body">
+        <p class="pull-right">
+            @Html.ActionLink("เพิ่มข้อมูล", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+        <br /><br />
+        <table class="table" id="example">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserPassword)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserType.TypeUserName)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserPassword)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserType.TypeUserName)
+                    </td>
+                   
+                    <td class="pull-right">
+                        @Html.ActionLink("แก้ไข", "Edit", null, new { id = item.UserName }, new { @class = "btn btn-warning" })
+                        @Html.ActionLink("รายละเอียด", "Details", null, new { id = item.UserName }, new { @class = "btn btn-info" })
+                        @Html.ActionLink("ลบข้อมูล", "Delete", null, new { id = item.UserName }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

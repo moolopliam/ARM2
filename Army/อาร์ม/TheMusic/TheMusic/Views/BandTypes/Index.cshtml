@@ -1,0 +1,71 @@
+﻿@model IEnumerable<TheMusic.Models.BandType>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    if (Convert.ToInt32(TempData["error5"])  == 5)
+    {
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>โอ้ เกิดความผิดพลาด!</strong> <a href="#" class="alert-link">ข้อมูลนี้ถูกใช้งานอยู่</a> กรุณาตรวจสอบอีกครั้ง.
+        </div>
+    }
+    if (Convert.ToInt32(TempData["error5"])  == 1)
+    {
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>แจ้งเตือน!</strong> <a href="#" class="alert-link">เพิ่มเรียบร้อย</a> กรุณาตรวจสอบข้อมูล.
+        </div>
+    }
+    if (Convert.ToInt32(TempData["error5"])  == 2)
+    {
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>แจ้งเตือน!</strong> <a href="#" class="alert-link">แก้ไขข้อมูล เรียบร้อย</a> กรุณาตรวจสอบข้อมูล.
+        </div>
+    }
+}
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">ข้อมูลประเภทศิลปิน</h3>
+    </div>
+    <div class="panel-body">
+        <p class="pull-right">
+            @Html.ActionLink("เพิ่มข้อมูล", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+        <br /><br />
+        <table class="table" id="example">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.btNameType)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.btNameType)
+                        </td>
+
+                        <td class="pull-right">
+                            @Html.ActionLink("แก้ไข", "Edit", null, new { id = item.btBandTypeID }, new { @class = "btn btn-warning" })
+                            @Html.ActionLink("รายละเอียด", "Details", null, new { id = item.btBandTypeID }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("ลบข้อมูล", "Delete", null, new { id = item.btBandTypeID }, new { @class = "btn btn-danger" })
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

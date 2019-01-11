@@ -1,0 +1,89 @@
+﻿@model MST.Models.Music
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Music</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.msMusicName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.msMusicName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.msLyrics)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.msLyrics)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Albums.alAlbumsName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Albums.alAlbumsName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Author.atAuthorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author.atAuthorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Band.bBandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Band.bBandName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Melody.mlMelodyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Melody.mlMelodyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MusicStyle.mstStyleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MusicStyle.mstStyleName)
+        </dd>
+
+
+
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.msMusicUpload)
+        </dt>*@
+        
+        <dd>
+            <audio controls>
+                <source src="@Url.Content( Model.msMusicUpload)" type="audio/mp4">
+            </audio>
+           
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.msMusicID }) |
+    @Html.ActionLink("Back to List", "Indexl")
+</p>
